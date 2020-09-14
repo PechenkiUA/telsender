@@ -3,12 +3,10 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-
+use pechenki\Telsender\clasess\log;
 $caunt = 0;
-//
+//  log::clearLog();
 
-// echo "<pre>";
-// print_r($this->tscfwc->Option());
 ?>
 
   <div class="telsenderSetting">
@@ -155,12 +153,43 @@ $caunt = 0;
       <input  style="width:100%"  type="text" name="" value="" disabled="disabled"  />
     <span class="button-primary" id="CheckedProxy"> Проверить Proxy <sup>Pro</sup></span>
    </div>
-  <!-- <input type="radio" name="tabs" id="tabthree">
-  <label for="tabthree">Tab Three</label>
+  <input type="radio" name="tabs" id="tabthree">
+  <label for="tabthree">Log</label>
   <div class="tab">
-    <h1>Tab Three Content</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-  </div> -->
+    <!-- <h1>Tab Three Content</h1> -->
+    <div class="log0wrap">
+  
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Date</td>
+          <td>Content</td>
+        </tr>
+        <?php     
+   
+        if (log::getLog()) {
+          foreach (json_decode(log::getLog(),true) as $keyl => $valuel) {
+            $code = json_decode($valuel['data']);
+
+            echo '<tr>';
+            echo '<td class="log-date">'.date("Y-m-d H:i:s",$valuel["date"]) .'</td>';
+            echo '<td  class="log-data">'.$valuel['data'].'</td>';
+            echo '</tr>';
+          
+          
+          }
+        }  
+      ?>
+       
+         
+         
+        
+      </tbody>
+    </table>
+    </div>
+    
+  </div>
 </div>
 
 </br>

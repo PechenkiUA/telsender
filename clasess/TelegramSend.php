@@ -3,6 +3,8 @@
 namespace pechenki\Telsender\clasess;
 
 use pechenki\Telsender\clasess\TscfwcSetting;
+use pechenki\Telsender\clasess\TelegramApi;
+use pechenki\Telsender\clasess\log;
 /**
 
  * curl sender
@@ -57,28 +59,25 @@ class TelegramSend{
 
         }
 
- public  function requestToTelegram($reply,$type = 'sendMessage') {
+ public  function requestToTelegram($reply,$type = 'sendMessage') {    
 
-    $token = $this->Token;
-
-    $id = $this->Chat_id;
-
-    $data = array('chat_id' => $id ,
-
+    $data = array('chat_id' => $this->Chat_id,
                   'text' =>$reply,
                   'parse_mode' => $this->parse_mode,
-
                 );
 
-  return  wp_remote_get( 'https://api.telegram.org/bot'.$token.'/sendMessage?'.http_build_query($data) , array(
-      'timeout'     => 5,
-      'redirection' => 5,
-      'httpversion' => '1.0',
-      'blocking'    => true,
-      'headers'     => array(),
-      'body'        => null,
-      'cookies'     => array()
-    ) );
+  $TelegramApi = new TelegramApi($this->Token);
+  $return = $TelegramApi->sendMessage($data);   
+  log::setLog(json_encode($return));
+  // return  wp_remote_get( 'https://api.telegram.org/bot'.$token.'/sendMessage?'.http_build_query($data) , array(
+  //     'timeout'     => 5,
+  //     'redirection' => 5,
+  //     'httpversion' => '1.0',
+  //     'blocking'    => true,
+  //     'headers'     => array(),
+  //     'body'        => null,
+  //     'cookies'     => array()
+  //   ) );
 
 
 
