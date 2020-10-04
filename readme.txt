@@ -43,6 +43,11 @@ https://pechenki.top/telsender.html
 
 
 == Changelog ==
+= 1.10.0 =
+* fix html wc temlated
+* filter status order Fixed
+* add new shortcode  {products_v3} - all options product
+
 = 1.0.6 =
 * add shortcode woocommerce
 
@@ -70,5 +75,9 @@ https://pechenki.top/telsender.html
 0.9.5 - Add meta data product to Messages
 0.9.6 - Fixed eroor, add send to wpforms
 0.9.7 - Fixed eroor, fix send wpform, add languages files
+
+
+
+
 
 Для Работы нужен Сurl
