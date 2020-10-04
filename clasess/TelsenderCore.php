@@ -27,18 +27,23 @@ class TelsenderCore
 
 
 
-
           add_action('admin_menu', array($this,'tscfwc_dynamic_button'));
-          add_action('woocommerce_checkout_order_processed',array($this,'tscfwc_woocommerce_new_order'));
+          // add_action('woocommerce_checkout_order_processed',array($this,'tscfwc_woocommerce_new_order'));
           add_action('wp_ajax_tscfwc_form_reqest',array($this,'tscfwc_form_ajax_reqest'));
           add_action( 'wpforms_process_entry_save', array( $this, 'tscfwc_wp_form'),10, 4 );
+          add_action('admin_enqueue_scripts', array( $this, 'wc_code_templated'));
+
           // add_action('Telsender_pechenki_self', array($this,'testFu'));
-          // add_action('woocommerce_new_order', array($this,'tscfwc_woocommerce_new_order'));
+          add_action('woocommerce_email_order_details', array($this,'tscfwc_woocommerce_new_order'),10,1);
+          // add_action('woocommerce_checkout_update_order_meta', array($this,'tscfwc_woocommerce_new_order'));
+          
            add_action("wpcf7_mail_sent", array($this,'wpcf7_tscfwc'),99, 1 );
 
           // add_filter( 'wpcf7_form_elements', 'do_shortcode' );// register hook
     }
 
+
+    
 
     public static function get_instance(){
   		if ( empty( self::$instance ) ) :
@@ -137,16 +142,19 @@ class TelsenderCore
          * action new order woocommerce
          *  @return SendMesage
          */
-         public function tscfwc_woocommerce_new_order($order_id){
+         public function tscfwc_woocommerce_new_order($order){        
+         
           $wc_chek = $this->tscfwc->Option('tscfwc_setting_setcheck');
-          $wc = new TelsenderWc($order_id);
+          $wc_access_status = $this->tscfwc->Option('tscfwc_setting_status_wc');        
 
+          // if (!in_array('wc-'.$order->data['status'],$wc_access_status)) return;
+
+          $wc = new TelsenderWc($order->data['id']);
            if ($wc_chek['wooc_check']) {
              $teml = $this->tscfwc->Option('tscfwc_setting_wooc_template');
              $message = $wc->getBillingDetails($teml);
              $this->telegram->SendMesage($message);
            }
-
 
          }
 
@@ -161,7 +169,7 @@ class TelsenderCore
            $validatePost = array(
          	'tscfwc_setting_token' => (!preg_match( '/[^0-9.A-Za-z:\-_=]/m', $_POST['tscfwc_setting_token'])? $_POST['tscfwc_setting_token']:''),
          	'tscfwc_setting_chatid' => (int)$_POST['tscfwc_setting_chatid'],
-         	'tscfwc_setting_wooc_template' => preg_replace( '/[#~?%&*@!^]/m','',$_POST['tscfwc_setting_wooc_template']),
+         	'tscfwc_setting_wooc_template' => htmlentities($_POST['tscfwc_setting_wooc_template']),
          	'tscfwc_setting_newtoken' => (!preg_match( '/[^0-9.A-Za-z\-:]/m', $_POST['tscfwc_setting_newtoken'])? $_POST['tscfwc_setting_newtoken']:''),
          	'tscfwc_setting_setcheck' => array('wooc_check'=> (int)$_POST['tscfwc_setting_setcheck']['wooc_check'],
                                               'tscfwc_key'=> (int)$_POST['tscfwc_setting_setcheck']['tscfwc_key']
@@ -172,11 +180,30 @@ class TelsenderCore
          );
 
            if ($validatePost) {
-             update_option(TSCFWC_SETTING,serialize($validatePost));
+           update_option(TSCFWC_SETTING,serialize($validatePost));
+           
            }
            wp_die();
 
          }
+
+
+         public function wc_code_templated(){  
+          $settings = wp_enqueue_code_editor(array('type' => 'text/html')); 
+          if (false === $settings) {
+            return;
+          }  
+          wp_add_inline_script(
+            'code-editor',
+            sprintf('jQuery( function() { ts_wc =  wp.codeEditor.initialize( "tscfwc_setting_wooc_template_editor", %s );setInterval(()=>{
+                  ts_wc.codemirror.refresh()
+                  ts_wc.codemirror.save()
+
+                  },500); } );', wp_json_encode($settings))
+          );
+         }
+
+         
 
 
 }

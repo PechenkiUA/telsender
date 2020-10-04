@@ -8,7 +8,7 @@
 #formsetinvendor label {
     font-size: 16px;
     padding: 7px 8px;
-    /* margin: 10px; */
+    border-radius: 10px 10px 0 0;
     font-weight: 500;
 }
 #formsetinvendor .radioinputkey, #formsetinvendor .radioinputdefaul {
@@ -32,9 +32,11 @@
     border-top: rgb(92, 107, 112) 3px solid;
 }
 
-.con-def,.con-key {
-    background: #e5e7e8;
-    padding: 1px 14px;
+.con-def, .con-key {
+  background: #e5e7e8;
+  padding: 1px 14px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #00000061;
 }
 /**
  * Tabs
@@ -51,8 +53,9 @@
   padding: 1rem 2rem;
   margin-right: 0.2rem;
   cursor: pointer;
-  background: #90CAF9;
+  background: #17b186;
   font-weight: bold;
+  color: #fff;
   transition: background ease 0.2s;
 }
 
@@ -71,6 +74,7 @@
 
 .tabs input[type="radio"]:checked + label {
   background: #fff;
+  color: #129e77;
 }
 
 .tabs input[type="radio"]:checked + label + .tab {
