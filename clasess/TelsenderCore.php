@@ -168,8 +168,6 @@ class TelsenderCore
 
     public function wpcf7_tscfwc($ccg)
     {
-
-
         if (in_array($ccg->id, $this->tscfwc->Option('tscfwc_setting_acsesform'))) {
 
             $output = wpcf7_mail_replace_tags($ccg->mail["body"]);
@@ -194,16 +192,22 @@ class TelsenderCore
 
             $isSendn = get_post_meta($order->get_id(), 'telsIsm', true);
 
-            if (!$isSendn) {
-                update_post_meta($order->get_id(), 'telsIsm', 1);
+            if (!$wc_chek['wooc_check'])  return;
+
+            if ($isSendn) {
+                $this->updateOrderToTelegram($order->get_id(),$isSendn);
+
+
             } else {
-                return;
+                $send = $this->sendNewOrderToTelegram($order->get_id());
+                if ($send['result']['message_id']){
+                    update_post_meta($order->get_id(), 'telsIsm', $send['result']['message_id']);
+                }
+
             }
 
 
-            if ($wc_chek['wooc_check']) {
-                $this->sendNewOrderToTelegram($order->get_id());
-            }
+
         }
         return;
     }
@@ -216,7 +220,20 @@ class TelsenderCore
         $wc = new TelsenderWc($OrderId);
         $teml = $this->tscfwc->Option('tscfwc_setting_wooc_template');
         $message = $wc->getBillingDetails($teml);
-        $this->telegram->SendMesage($message);
+        return $this->telegram->SendMesage($message);
+
+    }
+
+    /**
+     * @param $OrderId
+     */
+    private function updateOrderToTelegram($OrderId,$message_id)
+    {
+        $wc = new TelsenderWc($OrderId);
+        $teml = $this->tscfwc->Option('tscfwc_setting_wooc_template');
+        $message = $wc->getBillingDetails($teml);
+        return $this->telegram->UpdateMessage($message,$message_id);
+
     }
 
 

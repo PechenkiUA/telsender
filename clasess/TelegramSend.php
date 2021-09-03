@@ -93,6 +93,8 @@ class TelegramSend
 
         if ($return['ok'] == false) log::setLog(json_encode($return));
 
+        return $return;
+
 
     }
 
@@ -144,10 +146,42 @@ class TelegramSend
 
         } else {
 
-            $this->requestToTelegram(strip_tags($value, $this->acsess_tags));// send message through server Telegram
+          return $this->requestToTelegram(strip_tags($value, $this->acsess_tags));// send message through server Telegram
 
         }
 
+    }
+
+    public function UpdateMessage($text,$message_id){
+
+        $data = array('chat_id' => $this->Chat_id,
+            'text' => stripcslashes(html_entity_decode($text)),
+            'parse_mode' => $this->parse_mode,
+            'message_id'=>intval($message_id)
+        );
+
+        $return = wp_remote_post('https://api.telegram.org/bot' . $this->Token . '/editMessageText', array(
+            'timeout' => 5,
+            'redirection' => 5,
+            'httpversion' => '1.0',
+            'blocking' => true,
+            'headers' => array(),
+            'body' => $data,
+            'cookies' => array()
+        ));
+
+        if (is_wp_error($return)) {
+
+            return json_encode(['ok' => false, 'curl_error_code' => $return->get_error_message()]);
+        } else {
+            $return = json_decode($return['body'], true);
+        }
+
+        return $return;
+
+        if ($return['ok'] == false) log::setLog(json_encode($return));
+
+        return $return;
     }
 
 

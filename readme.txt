@@ -43,6 +43,10 @@ https://pechenki.top/telsender.html
 
 
 == Changelog ==
+= 1.12 =
+
+* message has been changed and not re-sent woocomerce
+
 = 1.11.1 =
 * do not send empty fields wp forms
 = 1.11.0 =
