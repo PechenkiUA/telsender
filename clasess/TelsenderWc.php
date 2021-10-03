@@ -79,12 +79,14 @@ class TelsenderWc
             } else {
 
                 $res = preg_replace('/\{|\}/', '', $item);
-                $_result = $this->order->data[$res];
-                if ($_result) {
-                    $this->replace[$item] = $_result;
-                } else {
-                    $this->replace[$item] = $this->order->get_meta($res) ?: '';
-                }
+
+                    $_result = $this->order->data[$res];
+                    if ($_result) {
+                        $this->replace[$item] = $_result;
+                    } else {
+                        $this->replace[$item] = $this->order->get_meta($res) ?: '';
+                    }
+
 
 
             }
@@ -104,6 +106,7 @@ class TelsenderWc
 
         $product = '';
         $product_v2 = '';
+        $product_v3  = '';
         foreach ($items as $item) {
 
             $metaProduct = $item->get_formatted_meta_data();
@@ -147,7 +150,7 @@ class TelsenderWc
 
         $replace['{order_n}'] = $this->order_id;
         $replace['{order_date}'] = wp_date('Y-m-d');
-        $replace['{order_time}'] = wp_date('G:i');
+        $replace['{order_time}'] = wp_date('G:i:s');
         return $replace;
     }
 
