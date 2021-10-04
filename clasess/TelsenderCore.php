@@ -254,16 +254,35 @@ class TelsenderCore
                 'wooc_all_order' => (int)$_POST['tscfwc_setting_setcheck']['wooc_all_order'],
                 'tscfwc_key' => (int)$_POST['tscfwc_setting_setcheck']['tscfwc_key']
             ),
-            'tscfwc_setting_acsesform' => array_map(function ($key) {
-                return (int)$key;
-            }, $_POST["tscfwc_setting_acsesform"]),
-            'tscfwc_setting_acseswpforms' => array_map(function ($key) {
-                return (int)$key;
-            }, $_POST["tscfwc_setting_acseswpforms"]),
-            'tscfwc_setting_status_wc' => array_map(function ($key) {
-                return (string)$key;
-            }, $_POST["tscfwc_setting_status_wc"]),
         );
+        /**
+         * status woocommerse save
+         */
+        if (isset( $_POST["tscfwc_setting_status_wc"])){
+            $validatePost['tscfwc_setting_status_wc'] =  array_map(function ($key) {
+                return (string)$key;
+            }, $_POST["tscfwc_setting_status_wc"]);
+        }
+
+        /**
+         * cf-7 save
+         */
+        if (isset($_POST["tscfwc_setting_acsesform"])){
+            $validatePost['tscfwc_setting_acsesform'] = array_map(function ($key) {
+                return (int)$key;
+            }, $_POST["tscfwc_setting_acsesform"]);
+        }
+
+
+        /**
+         * wp-forms-save
+         */
+        if (isset($_POST["tscfwc_setting_acseswpforms"])){
+
+            $validatePost['tscfwc_setting_acseswpforms'] = array_map(function ($key) {
+                return (int)$key;
+            }, $_POST["tscfwc_setting_acseswpforms"]);
+        }
 
         if ($validatePost) {
             update_option(TSCFWC_SETTING, serialize($validatePost));
@@ -271,7 +290,9 @@ class TelsenderCore
 
     }
 
-
+    /**
+     * codeEditor.initialize
+     */
     public function wc_code_templated()
     {
 
