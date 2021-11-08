@@ -43,6 +43,10 @@ https://pechenki.top/telsender.html
 
 
 == Changelog ==
+= 1.12.1 =
+* add button tested, return list id chats
+* fix update message WC
+
 = 1.12 =
 
 * message has been changed and not re-sent woocomerce
