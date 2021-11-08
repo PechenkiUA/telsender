@@ -218,6 +218,7 @@ class TelsenderCore
         $wc = new TelsenderWc($OrderId);
         $teml = $this->tscfwc->Option('tscfwc_setting_wooc_template');
         $message = $wc->getBillingDetails($teml);
+
         return $this->telegram->SendMesage($message);
 
     }
