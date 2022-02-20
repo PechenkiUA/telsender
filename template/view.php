@@ -16,7 +16,7 @@ $caunt = 0;
     <table>
 
         <tr>
-            <td>
+            <td style="width: 80%">
 
                 <form method="post" action="options.php" id="formsetinvendor">
                     <div class="tabs">
@@ -39,7 +39,7 @@ $caunt = 0;
                                         <?php _e("Further, according to the instructions of the bot, you will register your own and at the end you will be given a token", "telsender"); ?>
                                     </p>
 
-                                    <p><?php _e("To find out the chat id", "telsender"); ?> <strong>https://api.telegram.org/botxxxxxxxxxxxxxxxx/getUpdates</strong>
+                                    <p><?php _e("To find out the chat id", "telsender"); ?> <a id="getUpdates" href="https://api.telegram.org/bot{token}/getUpdates"><strong>https://api.telegram.org/bot{token}/getUpdates</strong></a>
                                     </p>
 
                                     <?php _e(" xxxxxxxxx your token that BotFather gave you.", "telsender"); ?>
@@ -49,7 +49,9 @@ $caunt = 0;
                                 <span class="dashicons dashicons-post-status"></span><input style="width:90%"
                                                                                             type="text"
                                                                                             name="tscfwc_setting_token"
-                                                                                            value="<?php echo $this->tscfwc->Option('tscfwc_setting_token'); ?>"/></br>
+                                                                                            value="<?php echo $this->tscfwc->Option('tscfwc_setting_token'); ?>"/>
+
+                                </br>
 
                                 <label><?php _e('ChatID', 'telsender'); ?></label></br>
                                 <span class="dashicons dashicons-post-status"></span>
@@ -127,7 +129,7 @@ $caunt = 0;
                             <div class="template_wc_telsender">
                                 <p><?php _e("woocommerce template", "telsender"); ?>
 
-                                    <smal><a href="https://pechenki.top/telsender.html#listcode" target="_blank">All
+                                    <smal><a href="https://gist.github.com/AlexandrKrot/7b4e6ba706506cd7e5c489b8ba6b65f4" target="_blank">All
                                             tags</a>
                                     </smal>
                                 </p>
@@ -192,39 +194,37 @@ $caunt = 0;
                 <hr/>
                 <form method="post" action="">
                     <input type="submit" name="curssent" class="button-primary" value="Отправить тестовое слово "/>
+                    <button type="button" onclick="telsenderInfo()"><span class="dashicons dashicons-cloud-upload"></span> Tested</button>
+
+                    <div class="result-tested">
+
+                    </div>
                 </form>
                 <hr/>
-                Плагин бесплатный, но если хотите отблагодарить автора.
-
-                <p><a href="https://pechenki.top/donate.html" target="_blank" class="button-info" style="
-
-    background: #17a2b8;
-
-    padding: 9px;
-
-    white-space:  nowrap;
-
-    font-size: 15px;
-
-    color: lemonchiffon;
-
-    text-decoration:  none;
-
-    border-radius:  5px;
-
-"> € На Печеньки</a></p>
 
                 <strong>Автор проекта : Александр
 
                     <a href="//Pechenki.top" target="_blank">сайт плагина</a>
 
                 </strong>
+                <a href="https://wordpress.org/plugins/chat-life-telegram/"  target="_blank">
+                    <img src="https://ps.w.org/chat-life-telegram/assets/banner-772x250.jpg?rev=2682025" alt="TelSender Event"   style="max-width: 100%;">
+                    <p>Chat life for telegram  (<small>Чат реального времени </small>)</p>
+
+                </a>
+
+                <a href="https://wordpress.org/plugins/telsender-events/"  target="_blank">
+                    <img src="https://ps.w.org/telsender-events/assets/banner-772x250.jpg?rev=2615358" alt="TelSender Event"   style="max-width: 100%;">
+                    <p>TelSender Event Add-ons (<small>Отслеживание событий </small>)</p>
+
+                </a>
 
                 <a href="https://pechenki.top/plugin-and-modules/telsenderPro.html" target="_blank">
                     <img src="https://pechenki.top/assets/cache_image/tlsPro/Telsender_800x350_ee8.jpg"
                          style="max-width: 100%;">
                     <p>TelsenderPro</p>
                 </a>
+
             </td>
 
         </tr>

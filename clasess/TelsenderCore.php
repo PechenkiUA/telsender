@@ -188,25 +188,25 @@ class TelsenderCore
         $wc_chek = $this->tscfwc->Option('tscfwc_setting_setcheck');
         $wc_access_status = $this->tscfwc->Option('tscfwc_setting_status_wc');
 
+        if (!is_array($wc_access_status)) return;
+
         if (in_array('wc-' . $order->get_status(), $wc_access_status) || !$wc_access_status) {
 
             $isSendn = get_post_meta($order->get_id(), 'telsIsm', true);
 
             if (!$wc_chek['wooc_check'])  return;
 
-            if ($isSendn) {
+            if ($isSendn && $isSendn != '-1') {
                 $this->updateOrderToTelegram($order->get_id(),$isSendn);
-
-
             } else {
                 $send = $this->sendNewOrderToTelegram($order->get_id());
-                if ($send['result']['message_id']){
+                if (isset($send['result']['message_id'])){
                     update_post_meta($order->get_id(), 'telsIsm', $send['result']['message_id']);
+                }else{
+                    update_post_meta($order->get_id(), 'telsIsm', -1);
                 }
 
             }
-
-
 
         }
         return;
@@ -220,6 +220,7 @@ class TelsenderCore
         $wc = new TelsenderWc($OrderId);
         $teml = $this->tscfwc->Option('tscfwc_setting_wooc_template');
         $message = $wc->getBillingDetails($teml);
+
         return $this->telegram->SendMesage($message);
 
     }
@@ -246,7 +247,7 @@ class TelsenderCore
 
         $validatePost = array(
             'tscfwc_setting_token' => (!preg_match('/[^0-9.A-Za-z:\-_=]/m', $_POST['tscfwc_setting_token']) ? $_POST['tscfwc_setting_token'] : ''),
-            'tscfwc_setting_chatid' => (int)$_POST['tscfwc_setting_chatid'],
+            'tscfwc_setting_chatid' => (string)$_POST['tscfwc_setting_chatid'],
             'tscfwc_setting_wooc_template' => htmlentities($_POST['tscfwc_setting_wooc_template']),
             'tscfwc_setting_newtoken' => (!preg_match('/[^0-9.A-Za-z\-:]/m', $_POST['tscfwc_setting_newtoken']) ? $_POST['tscfwc_setting_newtoken'] : ''),
             'tscfwc_setting_setcheck' => array(

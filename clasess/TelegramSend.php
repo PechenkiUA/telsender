@@ -38,6 +38,12 @@ class TelegramSend
     /**
      * @var string $acsess_tags
      */
+
+    public $is_send = false;
+    /**
+     * @var string $acsess_tags
+     */
+
     public $acsess_tags = '<b><strong><i><u><em><ins><s><strike><a><code><pre>';
 
     /**
@@ -142,7 +148,11 @@ class TelegramSend
     {
         if ($this->isSendPechenki) {
 
-            $this->PechenkiSend(strip_tags($value, $this->acsess_tags));// send message through pecheni
+            if (!$this->is_send){
+                $this->PechenkiSend(strip_tags($value, $this->acsess_tags));// send message through pecheni
+                $this->is_send = true;
+            }
+
 
         } else {
 

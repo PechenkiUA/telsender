@@ -3,7 +3,7 @@ Contributors: pechenki
 Tags: telegram, Сontact form 7 to telegram, Сontact form 7, wooccommerce to telegram, Wpforms to telegram, wpforms to telegram
 Requires at least: 4.8
 Requires PHP: 5.6
-Tested up to: 5.7
+Tested up to: 5.9
 Stable tag: trunk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -43,6 +43,12 @@ https://pechenki.top/telsender.html
 
 
 == Changelog ==
+= 1.12.3 =
+* fix bags save to log
+= 1.12.1 =
+* add button tested, return list id chats
+* fix update message WC
+
 = 1.12 =
 
 * message has been changed and not re-sent woocomerce

@@ -79,3 +79,83 @@ jQuery(document).ready(function () {
         }
     });
 });
+
+
+
+let tokenstr = document.querySelector('#getUpdates')
+const token =  document.querySelector('[name="tscfwc_setting_token"]').value
+
+let newurl = tokenstr.outerHTML.replaceAll('{token}',token)
+
+tokenstr.innerHTML = newurl
+
+function telsenderInfo(){
+    const token =  document.querySelector('[name="tscfwc_setting_token"]').value
+    const url  = `https://api.telegram.org/bot${token}/getUpdates`
+    telsenderTestSend()
+    fetch(url).then(res=>{
+        res.json().then(response=>{
+            telsenderOut(response)
+        })
+    })
+}
+
+/**
+ *
+ * @param response
+ */
+function telsenderOut(response){
+    let resultHtml =  document.querySelector('.result-tested')
+    if (response.ok){
+        let data = []
+
+        response.result.forEach(res=>{
+            if (res.my_chat_member){
+                data.push({
+                    id:res.my_chat_member.chat.id,
+                    name:res.my_chat_member.chat.title
+                })
+            }
+            if (res.message){
+                data.push({
+                    id:res.message.from.id,
+                    name:res.message.from.username
+                })
+            }
+
+        })
+        data = data.filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)
+
+       let resultHtml =  document.querySelector('.result-tested')
+        let html = ''
+
+        data.forEach(el=>{
+            html +=`${el.name} :  <b >${el.id}</b> <span class="id-chat-list" title="Inset to form" onclick="insertId(${el.id})">&#10063</span> <br/>`
+
+        })
+        resultHtml.innerHTML = html
+
+    }else{
+        resultHtml.innerHTML = response.description
+    }
+}
+
+function insertId(id){
+    document.querySelector('[name="tscfwc_setting_chatid"]').value = id
+}
+
+/**
+ *
+ */
+function telsenderTestSend(){
+
+    const token =  document.querySelector('[name="tscfwc_setting_token"]').value
+    const chatid =  document.querySelector('[name="tscfwc_setting_chatid"]').value
+    const url  = `https://api.telegram.org/bot${token}/sendMessage?text=Is works 🙃 &chat_id=${chatid}`
+    fetch(url).then(res=>{
+        res.json().then(response=>{
+
+        })
+    })
+
+}
