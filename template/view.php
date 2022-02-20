@@ -207,17 +207,6 @@ $caunt = 0;
                     <a href="//Pechenki.top" target="_blank">сайт плагина</a>
 
                 </strong>
-                <a href="https://wordpress.org/plugins/chat-life-telegram/"  target="_blank">
-                    <img src="https://ps.w.org/chat-life-telegram/assets/banner-772x250.jpg?rev=2682025" alt="TelSender Event"   style="max-width: 100%;">
-                    <p>Chat life for telegram  (<small>Чат реального времени </small>)</p>
-
-                </a>
-
-                <a href="https://wordpress.org/plugins/telsender-events/"  target="_blank">
-                    <img src="https://ps.w.org/telsender-events/assets/banner-772x250.jpg?rev=2615358" alt="TelSender Event"   style="max-width: 100%;">
-                    <p>TelSender Event Add-ons (<small>Отслеживание событий </small>)</p>
-
-                </a>
 
                 <a href="https://pechenki.top/plugin-and-modules/telsenderPro.html" target="_blank">
                     <img src="https://pechenki.top/assets/cache_image/tlsPro/Telsender_800x350_ee8.jpg"
