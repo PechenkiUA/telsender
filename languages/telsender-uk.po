@@ -1,0 +1,153 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-30 12:53+0300\n"
+"PO-Revision-Date: 2022-09-28 20:42+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: uk_UA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-Basepath: .\n"
+
+#: template/view.php:25
+msgid "Setting"
+msgstr "Налаштування"
+
+#: template/view.php:27
+msgid "Settings"
+msgstr "Налаштування"
+
+#: template/view.php:30
+msgid "Send to key TSkey"
+msgstr ""
+
+#: template/view.php:35
+msgid "To get a token and register your bot, you need to add a bot"
+msgstr "Щоб отримати токен  вам потрібно зареєструвати бота"
+
+#: template/view.php:37
+msgid ""
+"Further, according to the instructions of the bot, you will register your own and at the end "
+"you will be given a token"
+msgstr "Далі за інструкцією бота ви зареєструєте свій і в кінці вам видадуть токен"
+
+#: template/view.php:39
+msgid "To find out the chat id"
+msgstr ""
+
+#: template/view.php:41
+msgid " xxxxxxxxx your token that BotFather gave you."
+msgstr "xxxxxxxxx ваш токен, який дав вам BotFather."
+
+#: template/view.php:44
+msgid "Token"
+msgstr ""
+
+#: template/view.php:47
+msgid "ChatID"
+msgstr ""
+
+#: template/view.php:54
+msgid "In this mode, all messages will be sent to your chat bot."
+msgstr ""
+
+#: template/view.php:56
+msgid "Key TSkey"
+msgstr ""
+
+#: template/view.php:64
+msgid "Send Files cf7"
+msgstr ""
+
+#: template/view.php:68
+msgid "CF7"
+msgstr ""
+
+#: template/view.php:83
+msgid "Wp Form"
+msgstr ""
+
+#: template/view.php:103
+msgid "Send out woocommerce"
+msgstr ""
+
+#: template/view.php:104
+msgid "Filter status order"
+msgstr ""
+
+#: template/view.php:114
+msgid "woocommerce template"
+msgstr "Woocommerce шаблон повідомлення"
+
+#: template/view.php:124 template/view.php:127
+msgid "Set proxy"
+msgstr ""
+
+#: template/view.php:128
+msgid "Using Free Proxy does not guarantee successful delivery."
+msgstr ""
+
+#: template/view.php:129
+msgid "Using Proxy slows down sending."
+msgstr ""
+
+#: template/view.php:132
+msgid "Type proxy"
+msgstr ""
+
+#: template/view.php:142
+msgid "IP"
+msgstr ""
+
+#: template/view.php:146
+msgid "Port"
+msgstr ""
+
+#: template/view.php:149
+msgid "Login"
+msgstr ""
+
+#: template/view.php:152
+msgid "Password"
+msgstr "Пароль"
+
+#: template/view.php:183
+msgid "More information"
+msgstr "Більше інформації"
+
+#. Plugin Name of the plugin/theme
+msgid "TelSender"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Плагин отправляет заявки из форм в телеграм канал"
+msgstr "Плагін відправляє заявки з форми в телеграм канал"
+
+#. Author of the plugin/theme
+msgid "Send out woocommerce new order"
+msgstr "Надсилати повідомлення про нове замовлення woocommerce"
+
+#. Author of the plugin/theme
+msgid "Disabled to status"
+msgstr "Вимкнено до статусу"
+
+msgid "Send with status"
+msgstr "Надсилати при статусах"
+
+#. Author of the plugin/theme
+msgid "Pechenki"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "In the pro version, it is possible to specify different Telegram channels for the forms"
+msgstr "У версії PRO для форм можна вказати різні канали Telegram"
+
+#. Author URI of the plugin/theme
+msgid "https://pechenki.top/telsender.html"
+msgstr ""

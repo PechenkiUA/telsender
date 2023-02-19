@@ -1,0 +1,98 @@
+#telsenderevent {
+    max-width: 600px;
+}
+
+
+#telsenderevent fieldset {
+    border: solid 1px #ccc;
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 3px;
+    background: #fff;
+
+}
+
+#telsenderevent legend {
+    padding: 5px;
+    background: #ffff;
+    border-radius: 5px 5px 0 0;
+    font-weight: 700;
+    /* border: solid 1px #ccc; */
+    /*box-shadow: 0px -3px 4px;*/
+}
+
+#telsenderevent .utm_list {
+    display: flex;
+}
+
+#telsenderevent input {
+    border-radius: 0;
+    margin: 1px 0;
+}
+
+#telsenderevent button.add {
+    background: green;
+    margin: 1px;
+    color: #fff;
+}
+
+#telsenderevent button.remove {
+    color: #fff;
+    background: red;
+    margin: 1px;
+}
+
+#telsenderevent input::placeholder {
+    opacity: 0.5;
+}
+
+#telsenderevent input[type=checkbox],
+#telsenderevent input[type=checkbox]:focus {
+    border: none;
+    box-shadow: none;
+    width: auto;
+    height: auto;
+    display: inline-flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#telsenderevent input[type=checkbox]:checked::before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='green' class='bi bi-toggle-on' viewBox='0 0 16 16'%3E%3Cpath d='M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z'/%3E%3C/svg%3E");
+
+
+    margin: 0;
+    height: 30px;
+    transition: all .2s;
+    width: 50px;
+
+}
+
+#telsenderevent input[type=checkbox]::before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-toggle-off' viewBox='0 0 16 16'%3E%3Cpath d='M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z'/%3E%3C/svg%3E");
+    margin: 0;
+    width: 50px;
+    transition: all .2s;
+    height: 30px;
+
+}
+
+.disabled {
+    opacity: .4;
+    cursor: no-drop;
+    position: relative;
+}
+
+.disabled:before {
+    content: '';
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    /* background: #ccc; */
+}
