@@ -2,6 +2,9 @@
 
 namespace pechenki\Telsender\clasess;
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 /**
  * Class TelsenderWc
  * @package pechenki\Telsender\clasess

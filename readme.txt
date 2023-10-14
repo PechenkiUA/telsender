@@ -3,30 +3,58 @@ Contributors: pechenki
 Tags: telegram, Сontact form 7 to telegram, Сontact form 7, wooccommerce to telegram, Wpforms to telegram, wpforms to telegram
 Requires at least: 4.8
 Requires PHP: 5.6
-Tested up to: 6.0
-Stable tag: 1.14
+Tested up to: 6.3
+Stable tag: 1.14.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 TelSender - a plugin that works with contact form 7 and the woocommerce store in wordpress. It sends applications from forms to a chat telegram.
 
 == Description ==
-Contact form 7 has earned fame as a free form designer with a flexible settings system.
+Електронна пошта це добре але не завжди швидко. Тому пропоную надсилати данні з форм на сайті в телеграм. Плагін дозволяє надсилати данні з таких форм які створенні через ContactForm,wpforms, а також перехоплювати будь які  POST запити на сервері.
+Також є інтеграція з  wooccommerce, тепер всі нові замовленя будуть відправлятись і в телеграм. 
 
-I suggest that this only improve. Namely, send letters not only to mail, but also to chat telegrams.
-It is also possible to send orders from your wooccommerce store. Example message in screenshot # 3.
+Переваги [TelsenderPro](https://coder.org.ua/dev/wordpress/telsender-pro)
+- Надсилати файли
+- Надсилати декільком користувачам
+- Якщо чат використовує гілки, надсилати у відповідну гулку
+- Вказати для ріних форм різні чати в телегра
+- В подіяї можливість відслідковувати користувачів, що хочуть авторизуватись та заблокувати їх ip
 
 
+Email is good, but not always fast. Therefore, I suggest sending data from forms on the site to Telegram. The plugin allows you to send data from such forms created through ContactForm, wpforms, as well as intercept any POST requests on the server.
+There is also an integration with wooccommerce, now all new orders will be sent to Telegram.
+
+Advantages of [TelsenderPro](https://coder.org.ua/dev/wordpress/telsender-pro)
+- Send files
+- Send to multiple users
+- If the chat uses branches, send to the appropriate branch
+- Specify different chats in Telegram for different forms
+- In the event, you can track users who want to log in and block their IP
 
 
 == Features ==
 
-* Sends applications from contact-form 7 to telegrams;
-* Send orders from wooccommerce to telegrams;
-* Messages quickly reach;
-* Convenient to use;
-* Effectively;
+* Надсилає заявки з ContactForm 7 у телеграми;
+* Надсилає заявки з wpforms у телеграми;
+* Надсилає повідомлення про Login Failed (Помилка входу в систему)
+* Надсилає повідомлення про Login success ( Успішний вхід в систему)
+* Перехоплення  Post запитів
+* Надсилає замовлення з wooccommerce в телеграми;
+* Повідомлення швидко досягають;
+* Зручний у використанні;
+* Ефективно;
 
+
+* Sends requests from ContactForm 7 to telegrams;
+* Sends requests from wpforms to telegrams;
+* Sends Login Failed notification to emails
+* Sends Login success notification (Successful login)
+* Intercepts Post requests
+* Sends orders from wooccommerce to telegrams;
+* Messages reach quickly;
+* Easy to use;
+* Effective;
 
 == Installation ==
 
@@ -45,6 +73,13 @@ https://pechenki.top/telsender.html
 
 
 == Changelog ==
+= 1.14.8 =
+ - add chat id from wooccommerce
+ - fix error
+
+= 1.14.7 =
+ - add FAQ page
+
 = 1.14.5 =
 - add function TelsenderSendMessages
 - fix translate

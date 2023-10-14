@@ -8,8 +8,9 @@
     border: solid 1px #ccc;
     padding: 5px;
     margin: 5px 0;
-    border-radius: 3px;
+    border-radius: 10px;
     background: #fff;
+    box-shadow: 1px 1px 5px #ccc;
 
 }
 
@@ -111,6 +112,8 @@
     padding: 7px 8px;
     border-radius: 10px 10px 0 0;
     font-weight: 500;
+    display: flex;
+    flex-direction: column;
 }
 
 #formsetinvendor .radioinputkey, #formsetinvendor .radioinputdefaul {
@@ -131,11 +134,12 @@
 }
 
 .telsenderSetting {
-    background: #e5e7e8;
+    background: #ffffff;
     display: inline-block;
     padding: 10px;
     border-radius: 10px;
-    border-top: rgb(92, 107, 112) 3px solid;
+    /* border-top: rgb(92, 107, 112) 3px solid; */
+    box-shadow: 1px 1px 5px #ccc;
 }
 
 .con-def, .con-key {
@@ -792,3 +796,37 @@ sup {
     height: 30px;
 
 }
+
+.telsenderSetting .list-forms{
+    background: #006d8830;
+    border-radius: 5px;
+}
+.telsenderSetting input[type="checkbox"]{
+    border-radius: 10px;
+    overflow: hidden;
+    background: none;
+
+}
+.telsenderSetting .list-forms li{
+    border-bottom: 1px solid #ccc;
+    overflow: hidden;
+    margin: 0;
+}
+.telsenderSetting .list-forms li:last-child{
+    border-bottom: none;
+}
+
+
+
+
+.input-pro{
+    height: 10px;
+    max-width: 100px;
+    margin: 3px!important;
+
+}
+.input-pro::placeholder{
+    font-size: 12px;
+    color: red;
+}
+

@@ -5,7 +5,9 @@
 namespace pechenki\Telsender\clasess;
 
 use pechenki\Telsender\clasess\TelsenderCore;
-
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 /**
  * @property mixed|null login_success
  * @property mixed|null login_failed
@@ -27,6 +29,7 @@ use pechenki\Telsender\clasess\TelsenderCore;
  * @property mixed|null utm
  * @property array utm_list_val
  */
+
 class TelsenderEvent
 {
     public $settings = [];
@@ -478,7 +481,7 @@ TAG;
     public function settingsTemplete()
     {
         add_submenu_page('TelSender-Pro', 'Events', 'Events', 'manage_options', 'telsender-event', array($this, 'renderSettings'));
-        add_submenu_page('telsender', 'Events', 'Events', 'manage_options', 'telsender-event', array($this, 'renderSettings'));
+        add_submenu_page('telsender', 'Events', 'Events', 'manage_options', 'telsender-event', array($this, 'renderSettings'),2);
     }
 
     /**

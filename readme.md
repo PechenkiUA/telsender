@@ -3,8 +3,8 @@ Contributors: pechenki
 Tags: telegram, Сontact form 7 to telegram, Сontact form 7, wooccommerce to telegram, Wpforms to telegram, wpforms to telegram
 Requires at least: 4.8
 Requires PHP: 5.6
-Tested up to: 6.0
-Stable tag: 1.14
+Tested up to: 6.3
+Stable tag: 1.14.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,14 @@ https://pechenki.top/telsender.html
 
 
 == Changelog ==
+= 1.14.8 =
+- add chat id from wooccommerce
+- fix error
+
+= 1.14.7 =
+ - add FAQ page
+= 1.14.6 =
+
 = 1.14 =
 _Add event_
 - [x] Login Failed
@@ -135,4 +143,4 @@ _Add event_
 
 
 
-Для Работы нужен Сurl
+[Для Работы нужен Сurl]()

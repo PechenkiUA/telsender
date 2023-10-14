@@ -2,6 +2,9 @@
 
 namespace pechenki\Telsender\clasess;
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 /**
  * curl sender
  */

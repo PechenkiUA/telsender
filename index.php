@@ -7,8 +7,8 @@
 Plugin Name: TelSender
 Description: Плагін відправляє заявки з форм у телеграм канал
 Author: Pechenki
-Version: 1.14.5
-Author URI: https://pechenki.top/telsender.html
+Version: 1.14.8
+Author URI: https://coder.org.ua/dev/wordpress/telsender
 */
 //////////////////////////////////
 if ( ! defined( 'ABSPATH' ) ) {

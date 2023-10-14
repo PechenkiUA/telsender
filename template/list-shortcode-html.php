@@ -1,5 +1,4 @@
 <code><pre>
-
 woocommerce  - shortcode
 /***/
 {order_n}  - номер заказа
@@ -21,5 +20,5 @@ woocommerce  - shortcode
 {payment_method_title}
 {customer_ip_address}
 {customer_user_agent}
-    </pre>
+</pre>
 </code>

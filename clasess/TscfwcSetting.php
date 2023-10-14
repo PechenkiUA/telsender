@@ -1,6 +1,10 @@
 <?php
 
 namespace pechenki\Telsender\clasess;
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 /**
  * Class TscfwcSetting
  * @package pechenki\Telsender\clasess

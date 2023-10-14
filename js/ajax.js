@@ -83,14 +83,14 @@ jQuery(document).ready(function () {
 
 
 let tokenstr = document.querySelector('#getUpdates')
-const token =  document.querySelector('[name="tscfwc_setting_token"]').value
+const token =  document.querySelector('[name="tscfwc_setting_token"]')?.value;
 
 let newurl = tokenstr.outerHTML.replaceAll('{token}',token)
 
 tokenstr.innerHTML = newurl
 
 function telsenderInfo(){
-    const token =  document.querySelector('[name="tscfwc_setting_token"]').value
+    const token =  document.querySelector('[name="tscfwc_setting_token"]')?.value;
     const url  = `https://api.telegram.org/bot${token}/getUpdates`
     telsenderTestSend()
     fetch(url).then(res=>{

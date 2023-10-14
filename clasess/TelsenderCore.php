@@ -6,6 +6,9 @@ use pechenki\Telsender\clasess\TelegramSend as Telegransender;
 use pechenki\Telsender\clasess\TscfwcSetting;
 use function Symfony\Component\Translation\t;
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 /**
  * Class TelsenderCore
  * @property $settings
@@ -13,6 +16,8 @@ use function Symfony\Component\Translation\t;
  */
 class TelsenderCore extends TscfwcSetting
 {
+
+    public $version = '1.14.6';
 
     /**
      * @var TelegramSend $telegram
@@ -77,7 +82,8 @@ class TelsenderCore extends TscfwcSetting
      */
     public function tscfwc_dynamic_button()
     {
-        add_menu_page('TelSender', 'TelSender', 'manage_options', 'telsender', array($this, 'tscfwc_setting_page'), plugin_dir_url(__FILE__) . '../assets/icon-plugin.png');
+        add_menu_page('TelSender', 'TelSender 🇺🇦', 'manage_options', 'telsender', array($this, 'tscfwc_setting_page'), plugin_dir_url(__FILE__) . '../assets/icon-plugin.png');
+        add_submenu_page('telsender', 'Help', 'Help 🆘', 'manage_options', 'telsender-help', array($this, 'help'),10);
     }
 
 
@@ -89,11 +95,10 @@ class TelsenderCore extends TscfwcSetting
     public function tscfwc_setting_page()
     {
         load_plugin_textdomain('telsender', false, TELSENDER_DIR_NAME . '/languages/');
-
-        wp_enqueue_style('multi-select',TELSENDER_DIR_URL . 'css/multiselect.css');
+        wp_enqueue_style('multi-select',TELSENDER_DIR_URL . 'css/multiselect.css',false,$this->version);
         wp_enqueue_script('multi-select.',TELSENDER_DIR_URL . 'js/multiselect.js');
-        wp_enqueue_script('ajax', TELSENDER_DIR_URL . 'js/ajax.js');
-        wp_enqueue_style('telsender-css', TELSENDER_DIR_URL . 'css/telsender.css');
+        wp_enqueue_script('ajax', TELSENDER_DIR_URL . 'js/ajax.js',false,false,$this->version);
+        wp_enqueue_style('telsender-css', TELSENDER_DIR_URL . 'css/telsender.css',false,$this->version);
 
         if (isset($_POST['curssent'])) {
             $reply = 'Send';
@@ -106,6 +111,16 @@ class TelsenderCore extends TscfwcSetting
             $data['is_check_wc'] = '';
 
         }
+
+
+
+        if ($this->tscfwc_setting_setcheck && isset($this->tscfwc_setting_setcheck['wooc_chat_id'])) {
+            $data['wooc_chat_id'] = $this->tscfwc_setting_setcheck['wooc_chat_id'];
+        } else {
+            $data['wooc_chat_id'] = '';
+
+        }
+
 
         if ($this->tscfwc_setting_setcheck && isset($this->tscfwc_setting_setcheck['wooc_all_order'])) {
             $data['is_wooc_all_order'] = $this->tscfwc_setting_setcheck['wooc_all_order'];
@@ -139,6 +154,23 @@ class TelsenderCore extends TscfwcSetting
 
 
         $this->render('template/view',$data);
+
+    }
+
+    /**
+     * @return void
+     */
+    public function help()
+    {
+        load_plugin_textdomain('telsender', false, TELSENDER_DIR_NAME . '/languages/');
+        wp_enqueue_style('multi-select',TELSENDER_DIR_URL . 'css/multiselect.css',false,$this->version);
+        wp_enqueue_script('multi-select.',TELSENDER_DIR_URL . 'js/multiselect.js');
+        wp_enqueue_script('ajax', TELSENDER_DIR_URL . 'js/ajax.js',false,false,$this->version);
+        wp_enqueue_style('telsender-css', TELSENDER_DIR_URL . 'css/telsender.css',false,$this->version);
+
+
+
+        $this->render('template/help-page',[]);
 
     }
 
@@ -212,10 +244,11 @@ class TelsenderCore extends TscfwcSetting
         if (!is_array($wc_access_status)) return;
 
         if (in_array('wc-' . $order->get_status(), $wc_access_status) || !$wc_access_status) {
-
             $isSendn = get_post_meta($order->get_id(), 'telsIsm', true);
-
             if (!$wc_chek['wooc_check'])  return;
+            if (!empty($wc_chek['wooc_chat_id'])) {
+                $this->telegram->Chat_id = $wc_chek['wooc_chat_id'];
+            }
 
             if ($isSendn && $isSendn != '-1') {
                 $this->updateOrderToTelegram($order->get_id(),$isSendn);
@@ -274,6 +307,7 @@ class TelsenderCore extends TscfwcSetting
             'tscfwc_setting_wooc_template' => htmlentities($this->post('tscfwc_setting_wooc_template')),
             'tscfwc_setting_setcheck' => array(
                 'wooc_check' => (int)htmlentities($this->post('tscfwc_setting_setcheck')['wooc_check']),
+                'wooc_chat_id' => htmlentities($this->post('tscfwc_setting_setcheck')['wooc_chat_id']),
                 'wooc_all_order' => (int)htmlentities($this->post('tscfwc_setting_setcheck')['wooc_all_order']),
                 'tscfwc_key' => (int)htmlentities($this->post('tscfwc_setting_setcheck')['tscfwc_key'])
             ),
@@ -313,9 +347,13 @@ class TelsenderCore extends TscfwcSetting
             $validatePost['tscfwc_enabled'] = (int)htmlentities($this->post('tscfwc_enabled'));
         }
 
+
+
         if ($validatePost) {
             update_option(TSCFWC_SETTING, serialize($validatePost));
         }
+
+
 
     }
 

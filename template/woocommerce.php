@@ -1,9 +1,18 @@
 <fieldset>
     <legend><?php _e("Send out woocommerce", "telsender"); ?></legend>
 
+
+    <p>
     <input type="checkbox" name="tscfwc_setting_setcheck[wooc_check]"
            value="1" <?php checked($is_check_wc); ?> />
     <?php _e("Send out woocommerce", "telsender"); ?></br></p>
+    <p>
+        <label>
+            <span><?php _e("ChatID", "telsender"); ?></span>
+            <input type="text" value="<?php echo esc_attr($wooc_chat_id); ?>"
+                   name="tscfwc_setting_setcheck[wooc_chat_id]" placeholder=""/>
+        </label>
+    </p>
 
     <?php /* @var string $list_statuse_wc - list statuses */
     if ($list_statuse_wc) : ?>

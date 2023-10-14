@@ -1,6 +1,10 @@
-<?php 
+<?php
+
 namespace pechenki\Telsender\clasess;
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 class log{
     
     static $logNameOption = 'telsenderLog';
